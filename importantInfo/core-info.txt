@@ -1,0 +1,7 @@
+/* 
+NODE JS Core Modules:
+    http, https - Helpful to launch a server, sending requests, etc. https helpful for launching an SSL server.
+    fs - file system
+    path - Helps construct paths to files on the file system on any OS:
+    os - Helps with OS relavant information
+*/
