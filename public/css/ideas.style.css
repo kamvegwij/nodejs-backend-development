@@ -1,5 +1,5 @@
 /* Grid Layout */
-.tasks-grid {
+.ideas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 280px));
     gap: 1.5rem;
@@ -7,8 +7,8 @@
     justify-content: center;
 }
 
-/* Task Form */
-.task-form {
+/* Idea Form */
+.idea-form {
     background: white;
     padding: 2.5rem;
     border-radius: 16px;
@@ -18,7 +18,7 @@
     position: relative;
     overflow: hidden;
 }
-.task-form::before {
+.idea-form::before {
     content: '';
     position: absolute;
     top: 0;
@@ -27,7 +27,7 @@
     height: 4px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
-.task-form h1 {
+.idea-form h1 {
     margin: 0 0 2rem 0;
     color: #2c3e50;
     font-size: 2rem;
@@ -36,25 +36,25 @@
     letter-spacing: -0.025em;
 }
 
-/* Task */
-.task-item {
+/* Idea */
+.idea-item {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-.task-title {
+.idea-title {
     margin: 0;
     font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: -0.025em;
 }
-.task-price {
+.idea-price {
     margin: 0 0 0.75rem 0;
     font-size: 1.5rem;
     font-weight: 700;
     color: #2c3e50;
 }
-.task-description {
+.idea-description {
     margin: 0;
     color: #666;
     font-size: 0.9rem;
@@ -139,13 +139,13 @@
 
 /* Form responsive design */
 @media (max-width: 768px) {
-    .task-form {
+    .idea-form {
         margin: 2rem 1rem;
         padding: 2rem;
         max-width: none;
     }
     
-    .task-form h1 {
+    .idea-form h1 {
         font-size: 1.75rem;
     }
     
@@ -184,7 +184,7 @@ button:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .task-title {
+    .idea-title {
         font-size: 1.1rem;
     }
 }

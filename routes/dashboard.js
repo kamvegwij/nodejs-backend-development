@@ -5,9 +5,11 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     const tasks = adminData.tasks;
-    res.render('tasks.ejs', {
+    const ideas = adminData.ideas;
+    res.render('dashboard.ejs', {
         tasksData: tasks,
-        pageTitle: 'Home',
+        ideasData: ideas,
+        pageTitle: 'Dashboard',
         isActive: true,
         pagePath: '/'
     });

@@ -1,0 +1,14 @@
+<%- include('./includes/head.ejs') %>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <main>
+        <form class="idea-form"  action="/admin/ideas" method="POST">
+            <div class="form-control">
+                <label>Write down an idea</label>
+                <input type="text" name="title" placeholder="Enter a title"/>
+                <input type="text" name="description" placeholder="Enter the task description"/>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </main>
+<%- include('./includes/end.ejs') %>

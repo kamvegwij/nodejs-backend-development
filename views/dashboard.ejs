@@ -1,0 +1,55 @@
+<%- include('./includes/head.ejs') %>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <main>
+        <div class="tasks-section">
+            <h1 class="section-title">Tasks</h1>
+            <!-- Tasks Section -->
+            <% if (tasksData.length > 0) { %>
+                <div class="tasks-grid">
+                    <% tasksData.forEach(item => { %>
+                        <article class="card task-item">
+                            <header class="card-header">
+                                <h1 class="task-title"> <%=item.title%> </h1>
+                            </header>
+                            <div class="card-content">
+                                <h2 class="task-price"><%=item.time%></h2>
+                                <p class="task-description"><%=item.description%></p>
+                            </div>
+                            <div class="card-actions">
+                                <button class="card-button">Mark Complete</button>
+                            </div>
+                        </article>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <h1 class="section-empty-title">You have no assigned tasks</h1>
+            <% } %>
+        </div>
+        <div class="ideas-section">
+            <!-- Ideas Section -->
+            <!-- Color Palette site, you can add the colors you want to create a color palette. Integrate AI to generate for you-->
+            <!-- South African Folklore Website. A site for readers and writers, mainly South African writers telling South African stories. Integrate AI to generate short stories and/or poems. -->
+            <h1 class="section-title">Ideas</h1>
+            <% if (ideasData.length > 0) { %>
+                <div class="ideas-grid">
+                    <% ideasData.forEach(item => { %>
+                        <article class="card idea-item">
+                            <header class="card-header">
+                                <h1 class="idea-title"> <%=item.title%> </h1>
+                            </header>
+                            <div class="card-content">
+                                <p class="idea-description"><%=item.description%></p>
+                            </div>
+                            <div class="card-actions">
+                                <button class="card-button">Revisit</button>
+                            </div>
+                        </article>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <h1 class="section-empty-title">You have no written ideas</h1>
+            <% } %>
+        </div>
+    </main>
+<%- include('./includes/end.ejs') %>
