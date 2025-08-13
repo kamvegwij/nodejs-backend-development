@@ -1,29 +1,35 @@
 // admin.js
 const express = require('express'); //returns an express function:
-const path = require('path');
-const rootDir = require('../util/path.js');
-
+const { body, validationResult } = require('express-validator');
 const router = express.Router();
 
 // member variables:
-const products = [];
+const tasks = [];
 
-router.post('/product', (req, res) => {
-    products.push({
-        title: req.body.title || '---',
-        price: req.body.price || '---',
-        description: req.body.description || '---',
-        image: `"${req.body.image}"` || '---'
+router.post('/tasks', [
+    body('title').notEmpty().withMessage("Please enter in a Title!").trim().escape(),
+    body('time').notEmpty().withMessage("Please enter a time!").escape(),
+    body('description').notEmpty().withMessage('Please fill in a description!').trim().escape()
+] ,(req, res) => {
+    const validation = validationResult(req);
+    if (!validation.isEmpty()) {
+        console.log(validation);
+        return res.redirect('/admin/add-tasks');
+    }
+    tasks.push({
+        title: req.body.title,
+        time: req.body.time,
+        description: req.body.description
     });
     res.redirect('/');
 });
-router.get('/add-product', (req, res) => {
-    res.render('add-product.ejs', {
-        pageTitle: "Add Products",
+router.get('/add-tasks', (req, res) => {
+    res.render('add-tasks.ejs', {
+        pageTitle: "Add Tasks",
         isActive: true,
-        pagePath: '/admin/add-product'
+        pagePath: '/admin/add-tasks'
     });
 });
 
 exports.routes = router;
-exports.products = products;
+exports.tasks = tasks;

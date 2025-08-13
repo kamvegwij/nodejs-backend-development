@@ -5,7 +5,6 @@ body {
     margin: 0;
     line-height: 1.6;
 }
-
 main {
     padding: 2rem 1rem;
     max-width: 1200px;
@@ -20,25 +19,21 @@ main {
     padding: 0 2rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 .main-header-nav {
     height: 100%;
     display: flex;
     align-items: center;
 }
-
 .main-header-ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
-
 .main-header-item {
     margin: 0 1.5rem;
     padding: 0;
 }
-
 .main-header-item a {
     text-decoration: none;
     color: #ecf0f1;
@@ -46,7 +41,6 @@ main {
     font-size: 1.1rem;
     transition: color 0.3s ease;
 }
-
 .main-header-item a:hover,
 .main-header-item a:active,
 .main-header-item a.active {
@@ -61,8 +55,32 @@ main {
     margin-top: 2rem;
     justify-content: center;
 }
+.task-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.task-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.task-price {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+.task-description {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
 
-/* Product Card Styles */
+
+/* Task Card Styles */
 .card {
     background: white;
     border-radius: 12px;
@@ -72,32 +90,16 @@ main {
     width: 100%;
     max-width: 280px;
 }
-
 .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
-
-.product-item {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
 /* Card Header */
 .card-header {
     padding: 1rem;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
 }
-
-.product-title {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-}
-
 /* Card Image */
 .card-image {
     width: 100%;
@@ -108,18 +110,15 @@ main {
     justify-content: center;
     background-color: #f8f9fa;
 }
-
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
-
 .card:hover .card-image img {
     transform: scale(1.05);
 }
-
 /* Card Content */
 .card-content {
     padding: 1rem;
@@ -128,27 +127,11 @@ main {
     flex-direction: column;
     justify-content: space-between;
 }
-
-.product-price {
-    margin: 0 0 0.75rem 0;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-}
-
-.product-description {
-    margin: 0;
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
 /* Card Actions */
 .card-actions {
     padding: 0 1rem 1rem;
     margin-top: auto;
 }
-
 .card-button {
     width: 100%;
     padding: 0.75rem 1rem;
@@ -163,12 +146,10 @@ main {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-
 .card-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
-
 .card-button:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(102, 126, 234, 0.4);
@@ -186,7 +167,6 @@ button {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 button:hover {
     background-color: #2c3e50;
     color: white;
@@ -223,7 +203,7 @@ button:hover {
         padding: 0.75rem;
     }
     
-    .product-title {
+    .task-title {
         font-size: 1.1rem;
     }
     

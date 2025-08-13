@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const adminData = require('./routes/admin.js');
-const shopData = require('./routes/shop.js');
+const tasksData = require('./routes/tasks.js');
 
 const app = express(); //allows us to use express middleware utility functions:
 app.set('view engine', 'ejs'); //tell express to use the templating engine: pug.
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false })); //allow for parsing of data
 app.use(express.static(path.join(__dirname, 'public'))); //server static files.
 
 app.use('/admin', adminData.routes);
-app.use(shopData.routes);
+app.use(tasksData.routes);
 
 app.use((req, res, next) => {
     res.status(404).render('404.ejs', { pageTitle: "Page Error 404" });

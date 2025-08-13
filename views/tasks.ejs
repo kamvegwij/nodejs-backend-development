@@ -1,0 +1,26 @@
+<%- include('./includes/head.ejs') %>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <main>
+        <% if (tasksData.length > 0) { %>
+            <div class="grid">
+                <% tasksData.forEach(item => { %>
+                    <article class="card task-item">
+                        <header class="card-header">
+                            <h1 class="task-title"> <%=item.title%> </h1>
+                        </header>
+                        <div class="card-content">
+                            <h2 class="task-price"><%=item.time%></h2>
+                            <p class="task-description"><%=item.description%></p>
+                        </div>
+                        <div class="card-actions">
+                            <button class="card-button">Mark Complete</button>
+                        </div>
+                    </article>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <h1>You have no assigned tasks</h1>
+        <% } %>
+    </main>
+<%- include('./includes/end.ejs') %>
