@@ -1,23 +1,27 @@
 <%- include('./includes/head.ejs') %>
 <body>
     <%- include('./includes/navigation.ejs') %>
+    <form class="logout-form" action="/admin/logout" method="post">
+        <h1>Welcome <%=usersData.username %></h1>
+        <button type="submit">Logout</button>
+    </form>
     <main>
         <div class="tasks-section">
             <h1 class="section-title">Tasks</h1>
             <!-- Tasks Section -->
             <% if (tasksData.length > 0) { %>
-                <div class="tasks-grid">
+                <div class="task-grid">
                     <% tasksData.forEach(item => { %>
-                        <article class="card task-item">
-                            <header class="card-header">
+                        <article class="task-card task-item">
+                            <header class="task-card-header">
                                 <h1 class="task-title"> <%=item.title%> </h1>
                             </header>
-                            <div class="card-content">
-                                <h2 class="task-price"><%=item.time%></h2>
+                            <div class="task-card-content">
+                                <h2 class="task-time"><%=item.time%></h2>
                                 <p class="task-description"><%=item.description%></p>
                             </div>
-                            <div class="card-actions">
-                                <button class="card-button">Mark Complete</button>
+                            <div class="task-card-actions">
+                                <button class="task-card-button">Mark Complete</button>
                             </div>
                         </article>
                     <% }) %>
@@ -32,17 +36,17 @@
             <!-- South African Folklore Website. A site for readers and writers, mainly South African writers telling South African stories. Integrate AI to generate short stories and/or poems. -->
             <h1 class="section-title">Ideas</h1>
             <% if (ideasData.length > 0) { %>
-                <div class="ideas-grid">
+                <div class="idea-grid">
                     <% ideasData.forEach(item => { %>
-                        <article class="card idea-item">
-                            <header class="card-header">
+                        <article class="idea-card idea-item">
+                            <header class="idea-card-header">
                                 <h1 class="idea-title"> <%=item.title%> </h1>
                             </header>
-                            <div class="card-content">
+                            <div class="idea-card-content">
                                 <p class="idea-description"><%=item.description%></p>
                             </div>
-                            <div class="card-actions">
-                                <button class="card-button">Revisit</button>
+                            <div class="idea-card-actions">
+                                <button class="idea-card-button">Revisit</button>
                             </div>
                         </article>
                     <% }) %>

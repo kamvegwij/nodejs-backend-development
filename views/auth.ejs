@@ -1,0 +1,13 @@
+<%- include('./includes/head.ejs') %>
+<body>
+    <main>
+        <form class="login-form"  action="/login" method="POST">
+            <div class="login-form-control">
+                <label>Login</label>
+                <input type="text" name="username" placeholder="Enter username"/>
+                <input type="password" name="password" placeholder="Enter password"/>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </main>
+<%- include('./includes/end.ejs') %>

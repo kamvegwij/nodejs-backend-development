@@ -2,43 +2,15 @@
 const express = require('express'); //returns an express function:
 const { body, validationResult } = require('express-validator');
 const router = express.Router();
-
+const userData = require('./auth.js');
 // member variables:
-const tasks = [];
-const ideas = [];
-
-router.post('/tasks', [
-    body('title').notEmpty().withMessage("Please enter in a Title!").trim().escape(),
-    body('time').notEmpty().withMessage("Please enter a time!").escape(),
-    body('description').notEmpty().withMessage('Please fill in a description!').trim().escape()
-], (req, res) => {
-    const validation = validationResult(req);
-    if (!validation.isEmpty()) {
-        console.log(validation);
-        return res.redirect('/admin/add-tasks');
-    }
-    tasks.push({
-        title: req.body.title,
-        time: req.body.time,
-        description: req.body.description
-    });
-    res.redirect('/');
-});
-router.post('/ideas', [
-    body('title').notEmpty().withMessage("Please enter in a Title!").trim().escape(),
-    body('description').notEmpty().withMessage('Please fill in a description!').trim().escape()
- ], (req, res) => {
-    const validation = validationResult(req);
-    if (!validation.isEmpty()) {
-        console.log(validation);
-        return res.redirect('/admin/add-ideas');
-    }
-    ideas.push({
-        title: req.body.title,
-        description: req.body.description
-    });
-    res.redirect('/');
-});
+const tasks = [
+    {title: 'default task', time: '2025-08-14T13:30', description: 'default here...', complete: false},
+    {title: 'default task2', time: '2025-08-14T13:30', description: 'default here...', complete: false}
+];
+const ideas = [
+    {title: 'default idea', description: 'default here...'}
+];
 
 router.get('/add-tasks', (req, res) => {
     res.render('add-tasks.ejs', {
@@ -53,6 +25,46 @@ router.get('/add-ideas', (req, res) => {
         isActive: true,
         pagePath: '/admin/add-ideas'
     });
+});
+
+router.post('/tasks', [
+    body('title').notEmpty().withMessage("Please enter in a Title!").trim().escape(),
+    body('time').notEmpty().withMessage("Please enter a time!").escape(),
+    body('description').notEmpty().withMessage('Please fill in a description!').trim().escape()
+], (req, res) => {
+    const validation = validationResult(req);
+    if (!validation.isEmpty()) {
+        console.log(validation);
+        return res.redirect('/admin/add-tasks');
+    }
+    tasks.push({
+        title: req.body.title,
+        time: req.body.time,
+        description: req.body.description,
+        complete: false
+    });
+    res.redirect('/dashboard');
+});
+router.post('/ideas', [
+    body('title').notEmpty().withMessage("Please enter in a Title!").trim().escape(),
+    body('description').notEmpty().withMessage('Please fill in a description!').trim().escape()
+ ], (req, res) => {
+    const validation = validationResult(req);
+    if (!validation.isEmpty()) {
+        console.log(validation);
+        return res.redirect('/admin/add-ideas');
+    }
+    ideas.push({
+        title: req.body.title,
+        description: req.body.description
+    });
+    res.redirect('/dashboard');
+});
+router.post('/logout', (req, res) => {
+    userData.user.username = '';
+    userData.user.loggedIn = false;
+    console.log("Logging out the user!");
+    res.redirect('/');
 });
 
 exports.routes = router;
