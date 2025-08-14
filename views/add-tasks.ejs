@@ -1,14 +1,15 @@
 <%- include('./includes/head.ejs') %>
 <body>
     <%- include('./includes/navigation.ejs') %>
+    <!-- enctype="multipart/form-data" -->
     <main>
-        <form class="task-form" action="/admin/tasks" method="POST" enctype="multipart/form-data">
+        <form class="task-form" action="/admin/tasks" method="POST">
             <div class="task-form-control">
                 <h2>Create a New Task</h2>
-
+                
                 <label>Title</label>
                 <input type="text" name="title" placeholder="Enter a title" required />
-
+                
                 <label>Description</label>
                 <textarea name="description" placeholder="Enter the task description" rows="3" required></textarea>
 

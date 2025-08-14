@@ -4,7 +4,7 @@ const express = require('express');
 const { body, validationResult } = require('express-validator');
 const router = express.Router();
 
-const user = {username: '', loggedIn: false};
+const user = {username: 'Kamve', loggedIn: true};
 
 router.get('/', (req, res) => {
     res.render('auth.ejs', {

@@ -3,10 +3,11 @@ const express = require('express'); //returns an express function:
 const { body, validationResult } = require('express-validator');
 const router = express.Router();
 const userData = require('./auth.js');
+
 // member variables:
 const tasks = [
-    {title: 'default task', time: '2025-08-14T13:30', description: 'default here...', complete: false},
-    {title: 'default task2', time: '2025-08-14T13:30', description: 'default here...', complete: false}
+    {id: 1, title: 'default task', time: '2025-08-14T13:30', description: 'default here...', complete: false},
+    {id: 2, title: 'default task2', time: '2025-08-14T13:30', description: 'default here...', complete: false}
 ];
 const ideas = [
     {title: 'default idea', description: 'default here...'}
@@ -38,6 +39,7 @@ router.post('/tasks', [
         return res.redirect('/admin/add-tasks');
     }
     tasks.push({
+        id: tasks.length + 1,
         title: req.body.title,
         time: req.body.time,
         description: req.body.description,

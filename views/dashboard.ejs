@@ -16,12 +16,20 @@
                             <header class="task-card-header">
                                 <h1 class="task-title"> <%=item.title%> </h1>
                             </header>
+                            <div class="task-status-container">
+                                <% if (item.complete) {%>
+                                    <span class="task-status-complete">complete</span>
+                                <%} else { %>
+                                    <span class="task-status-incomplete">incomplete</span>
+                                <%} %>
+                            </div>
                             <div class="task-card-content">
-                                <h2 class="task-time"><%=item.time%></h2>
+                                <h2 hidden class="time-display" id="date-time-display"><%=item.time%></h2>
+                                <span class="task-time" id="formatted-date"></span>
                                 <p class="task-description"><%=item.description%></p>
                             </div>
                             <div class="task-card-actions">
-                                <button class="task-card-button">Mark Complete</button>
+                                <button class="task-card-button" onclick="markComplete('<%=item.id%>')">Mark Complete</button>
                             </div>
                         </article>
                     <% }) %>
@@ -55,5 +63,15 @@
                 <h1 class="section-empty-title">You have no written ideas</h1>
             <% } %>
         </div>
+        <script>
+            const dateDisplays = document.getElementsByClassName('time-display'); 
+            const dateCollection = Object.values(dateDisplays).map(d => {  //this will be in ISO 8601 format.
+                const localeDate = new Date(d.textContent).toLocaleDateString();
+                const localeTime = new Date(d.textContent).toLocaleTimeString();
+                return localeDate + " " + localeTime;
+            });
+            const formattedDateDisplays = document.getElementsByClassName('task-time');
+            Object.values(formattedDateDisplays).map((d, index) => {d.textContent = dateCollection[index]});
+        </script>
     </main>
 <%- include('./includes/end.ejs') %>
