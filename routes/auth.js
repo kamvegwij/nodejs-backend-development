@@ -21,16 +21,16 @@ router.post('/login', [
     const validation = validationResult(req);
     if (!validation.isEmpty()) {
         console.log(validation.array());
-        return res.redirect('/');
+        return res.json({ success: false, status: 400, message: "One of the fields is empty!" });
     }
     const { username, password } = req.body;
     if (password === '123456') {
         user.username = username;
         user.loggedIn = true;
-        return res.redirect('/dashboard');
+        return res.json({ success: true, status: 200, message: "Login successful" });
+    } else {
+        res.json({ success: false, status: 400, message: "Invalid credentials!" });
     }
-    console.log("Incorrect password");
-    res.redirect('/');
 })
 
 exports.routes = router;
