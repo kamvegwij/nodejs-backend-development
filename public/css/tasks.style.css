@@ -24,17 +24,18 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    color: white;
 }
 .task-status-complete {
-    background: rgba(124, 108, 85, 1);
+    background: rgba(124, 108, 85, 0.23);
+    color: rgba(124, 108, 85, 1);
     padding: 0.1rem 0.5rem;
     border-radius: 10px;
     font-size: 10px;
     font-weight: 700;
 }
 .task-status-incomplete {
-    background: rgba(30, 255, 0, 1);
+    background: rgba(30, 255, 0, 0.16);
+    color: rgba(30, 255, 0, 1);
     padding: 0.1rem 0.5rem;
     border-radius: 10px;
     font-size: 10px;

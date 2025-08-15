@@ -36,7 +36,7 @@ router.post('/tasks', [
     const validation = validationResult(req);
     if (!validation.isEmpty()) {
         console.log(validation);
-        return res.redirect('/admin/add-tasks');
+        return res.json({ status: 500, message: "One of the fields is empty!" });
     }
     tasks.push({
         id: tasks.length + 1,
@@ -45,7 +45,7 @@ router.post('/tasks', [
         description: req.body.description,
         complete: false
     });
-    res.redirect('/dashboard');
+    res.json({ success: true, message: "Task created!" });
 });
 router.post('/ideas', [
     body('title').notEmpty().withMessage("Please enter in a Title!").trim().escape(),
@@ -54,13 +54,13 @@ router.post('/ideas', [
     const validation = validationResult(req);
     if (!validation.isEmpty()) {
         console.log(validation);
-        return res.redirect('/admin/add-ideas');
+        return res.json({ status: 500, message: "One of the fields is empty!" });
     }
     ideas.push({
         title: req.body.title,
         description: req.body.description
     });
-    res.redirect('/dashboard');
+    res.json({ status: 200, message: "Idea added successfully" });
 });
 router.post('/logout', (req, res) => {
     userData.user.username = '';

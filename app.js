@@ -13,6 +13,7 @@ app.set('views', 'views'); //tell the engine where to find the html files
 
 app.use(bodyParser.urlencoded({ extended: false })); //allow for parsing of data chunks.
 app.use(express.static(path.join(__dirname, 'public'))); //server static files.
+app.use(express.json());
 
 app.use(authRoutes.routes);
 app.use('/admin', adminRoutes.routes);

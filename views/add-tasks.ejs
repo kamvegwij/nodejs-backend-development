@@ -1,27 +1,23 @@
 <%- include('./includes/head.ejs') %>
 <body>
     <%- include('./includes/navigation.ejs') %>
-    <!-- enctype="multipart/form-data" -->
     <main>
-        <form class="task-form" action="/admin/tasks" method="POST">
+        <form class="task-form" onsubmit="createNewTask(event)">
             <div class="task-form-control">
                 <h2>Create a New Task</h2>
                 
                 <label>Title</label>
-                <input type="text" name="title" placeholder="Enter a title" required />
+                <input type="text" name="title" id="task_title" placeholder="Enter a title" required />
                 
                 <label>Description</label>
-                <textarea name="description" placeholder="Enter the task description" rows="3" required></textarea>
+                <textarea name="description" id="task_description" placeholder="Enter the task description" rows="3" required></textarea>
 
                 <label>Time Frame</label>
-                <input type="datetime-local" name="time" required />
-
-                <label>Supporting Document</label>
-                <input type="file" name="docs" />
+                <input type="datetime-local" name="time" id="task_time" required />
 
                 <button type="submit">Save</button>
             </div>
         </form>
-
+        
     </main>
 <%- include('./includes/end.ejs') %>
