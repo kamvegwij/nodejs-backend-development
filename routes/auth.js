@@ -31,7 +31,12 @@ router.post('/login', [
     } else {
         res.json({ success: false, status: 400, message: "Invalid credentials!" });
     }
-})
+});
+router.post('/logout', (req, res) => {
+    user.username = '';
+    user.loggedIn = false;
+    res.status(200).json({ success: true, message: "Logged out successfully" });
+});
 
 exports.routes = router;
 exports.user = user;

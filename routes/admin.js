@@ -62,10 +62,19 @@ router.post('/ideas', [
     });
     res.json({ success: true, status: 200, message: "Idea added successfully" });
 });
-router.post('/logout', (req, res) => {
-    userData.user.username = '';
-    userData.user.loggedIn = false;
-    res.redirect('/');
+router.post('/mark-complete', [
+    body('task_id').notEmpty().withMessage("Could not find task!")
+], (req, res) => {
+    try {
+        const validate = validationResult(req);
+        if (!validate.isEmpty()) {
+            res.json({ success: false, message: 'Could not complete your request!' });
+        }
+        const { task_id } = req.body;
+        tasks.filter(item => item.id === parseInt(task_id))[0].complete = true;
+    } catch (err) {
+        res.json({ success: false, message: `An unexpected error ocurred ${err.message}` });
+    }
 });
 
 exports.routes = router;

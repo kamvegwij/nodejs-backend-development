@@ -1,7 +1,7 @@
 <%- include('./includes/head.ejs') %>
 <body>
     <%- include('./includes/navigation.ejs') %>
-    <form class="logout-form" action="/admin/logout" method="post">
+    <form class="logout-form" onsubmit="logoutUser(event)">
         <h1>Welcome <%=usersData.username %></h1>
         <button type="submit">Logout</button>
     </form>
@@ -42,7 +42,7 @@
             <!-- Ideas Section -->
             <!-- Color Palette site, you can add the colors you want to create a color palette. Integrate AI to generate for you-->
             <!-- South African Folklore Website. A site for readers and writers, mainly South African writers telling South African stories. Integrate AI to generate short stories and/or poems. -->
-            <h1 class="section-title">Ideas</h1>
+            <h1 class="section-title">Ideas/Notes</h1>
             <% if (ideasData.length > 0) { %>
                 <div class="idea-grid">
                     <% ideasData.forEach(item => { %>

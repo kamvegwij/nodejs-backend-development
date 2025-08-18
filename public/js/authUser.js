@@ -21,10 +21,20 @@ async function loginUser(event) {
         console.log(err.message);
     }
 }
-
 async function logoutUser(event) {
     try {
-
+        const response = await fetch('/logout', {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: null
+        });
+        const data = await response.json();
+        if (data.success) {
+            window.location.replace('http://localhost:5050/');
+            alert(data.message);
+        } else {
+            alert("Could not log you out!");
+        }
     } catch (err) {
         console.log(err.message);
     }

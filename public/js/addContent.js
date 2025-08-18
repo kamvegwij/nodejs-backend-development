@@ -1,6 +1,5 @@
 async function createNewTask(event) {
     event.preventDefault(); // --> this prevents the page from reloading...
-    console.log("Calling create new task method!");
     const title = document.getElementById('task_title').value;
     const time = document.getElementById('task_time').value;
     const description = document.getElementById('task_description').value;
@@ -39,4 +38,4 @@ async function createNewIdea(event) {
     } catch (err) {
         console.log(err.message);
     }
-}
+};
